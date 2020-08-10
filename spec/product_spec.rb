@@ -9,7 +9,7 @@ describe M2api::Product do
   context "#dataset" do
     let(:dataset) {M2api::Product.dataset}
     it "returns dataset" do
-      binding.pry
+      # binding.pry
       expect(dataset).to be_a M2api::Dataset
     end
   end
