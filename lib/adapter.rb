@@ -1,0 +1,63 @@
+module M2api
+  class Adapter < M2api::Connection
+    DateTimeFields = %i(created_at updated_at change_status_at)
+    DateFields = %i(dob)
+    def call method, path, params
+      http_method, params = case method
+      when :put, :post, :delete then [method, params.to_json]
+      when :get, :get_with_meta_data then [:get, params]
+      else
+        raise ArgumentError, "unknown method type. Expected :get, :get_with_meta_data, :post, :put or :delete. #{method} #{path}"
+      end
+
+      response = self.send(http_method, path, params)
+      M2api.logger.debug "Response body: #{response.body}" unless response.is_a? TrueClass
+
+      parsed_response = case method
+      when :get_with_meta_data, :put, :post then transform( parse( response))
+      when :get
+        parsed = parse(response)
+        if parsed.is_a?(Hash) && (parsed.has_key? :items)
+          (parsed[:items] || []).map do |item|
+            transform item
+          end
+        else
+          transform parsed
+        end
+      when :delete
+        response
+      else
+        raise ArgumentError, "unknown method type. Expected :get, :get_with_meta_data, :post, :put or :delete. #{method} #{path}"
+      end
+    end
+
+    private
+    def parse response
+      case response.code
+      when "200"
+        JSON.parse response.body, :symbolize_names => true
+      else
+        puts "error #{response.code}: #{JSON.parse(response.body)}"
+        return nil
+      end
+    end
+
+    def transform item
+      if(item && item.is_a?(Hash))
+        date_transform item
+      else
+        item
+      end
+    end
+
+    def date_transform item
+      DateFields.each do |date_field|
+        item[date_field] = Date.parse item[date_field] if item[date_field]
+      end
+      DateTimeFields.each do |datetime_field|
+        item[datetime_field] = (Time.parse "#{item[datetime_field]} UTC").getlocal if item[datetime_field]
+      end
+      item
+    end
+  end
+end
