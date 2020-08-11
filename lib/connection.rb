@@ -2,7 +2,7 @@ module M2api
   class Connection
     attr_accessor :host, :port, :user, :password, :token, :base_path, :scheme
 
-    def initialize uri, user, password, base_path:nil
+    def initialize uri, user, password, access_token=nil, base_path:nil
       uri = URI(uri)
       @host = uri.host
       @port = uri.port
@@ -10,7 +10,11 @@ module M2api
       @scheme = uri.scheme
       @password = password
       @base_path = base_path || "/rest/V1"
-      request_token
+      if access_token
+        @token = access_token
+      else
+        request_token 
+      end
     end
 
     def request_token
@@ -67,7 +71,7 @@ module M2api
     end
 
 
-    def get path, query
+    def get path, query = ""
       M2api.logger.info "GET #{host}#{base_path}/#{path}?#{query}"
       url = "#{base_path}/#{path}?#{query}"
       Net::HTTP.start(self.host,self.port, :use_ssl => self.scheme == 'https') do |http|

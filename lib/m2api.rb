@@ -8,11 +8,11 @@ require 'logger'
 module M2api
   Models = %w(base product customer order coupon sales_rule category cart stock_item)
   @@mutex = Mutex.new
-  def self.connect host=nil, user_name=nil, password=nil
+  def self.connect host=nil, user_name=nil, password=nil, access_token=nil
     raise ArgumentError, "no host specified" unless host
     raise ArgumentError, "no user_name specified" unless user_name
     raise ArgumentError, "no password specified" unless password
-    Base.adapter = Adapter.new host, user_name, password
+    Base.adapter = Adapter.new host, user_name, password, access_token
   end
 
   def self.with connection
