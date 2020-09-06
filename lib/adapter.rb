@@ -4,7 +4,7 @@ module M2api
     DateFields = %i(dob)
     def call method, path, params
       http_method, params = case method
-      when :put, :post, :delete then [method, params.to_json]
+      when :put, :post, :delete then [method, params.to_json(true)]
       when :get, :get_with_meta_data then [:get, params]
       else
         raise ArgumentError, "unknown method type. Expected :get, :get_with_meta_data, :post, :put or :delete. #{method} #{path}"

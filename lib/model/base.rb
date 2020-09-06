@@ -57,8 +57,9 @@ module M2api
       .to_h
     end
 
-    def to_json
-      Hash[self.class.lower_case_name, self.to_h].to_json
+    def to_json is_put = nil
+      entity_name = is_put && self.class.lower_case_name == 'order' ? 'entity' : self.class.lower_case_name
+      Hash[entity_name, self.to_h].to_json
     end
 
     class << self
