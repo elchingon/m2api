@@ -2,7 +2,7 @@ module M2api
   class Connection
     attr_accessor :host, :port, :user, :password, :token, :base_path, :scheme
 
-    def initialize uri, user, password, access_token=nil, base_path:nil
+    def initialize uri, user, password, access_token=nil, base_path=nil
       uri = URI(uri)
       @host = uri.host
       @port = uri.port
@@ -13,7 +13,7 @@ module M2api
       if access_token
         @token = access_token
       else
-        request_token 
+        request_token
       end
     end
 
