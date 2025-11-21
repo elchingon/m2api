@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name = "m2api".freeze
-  s.version = "0.1.4"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.metadata = { "allowed_push_host" => "https://github.com/", "changelog_uri" => "https://github.com/elchingon/m2api.git", "homepage_uri" => "https://github.com/elchingon/m2api.git", "source_code_uri" => "https://github.com/elchingon/m2api.git" } if s.respond_to? :metadata=
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.date = "2025-11-20"
   s.description = "Provides a simple Ruby Interface to interact with the Magento 2 API. Initial commit adapted from https://github.com/Arkad82x/magentwo ".freeze
   s.email = ["ciegoproductions@gmail.com".freeze]
-  s.files = [".gitignore".freeze, ".rspec".freeze, ".ruby-gemset".freeze, ".ruby-version".freeze, ".travis.yml".freeze, "CODE_OF_CONDUCT.md".freeze, "Gemfile".freeze, "Gemfile.lock".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "bin/console".freeze, "bin/setup".freeze, "lib/adapter.rb".freeze, "lib/connection.rb".freeze, "lib/dataset.rb".freeze, "lib/filter.rb".freeze, "lib/m2api.rb".freeze, "lib/m2api/version.rb".freeze, "lib/model/base.rb".freeze, "lib/model/cart.rb".freeze, "lib/model/category.rb".freeze, "lib/model/coupon.rb".freeze, "lib/model/customer.rb".freeze, "lib/model/order.rb".freeze, "lib/model/product.rb".freeze, "lib/model/product_attribute.rb".freeze, "lib/model/sales_rule.rb".freeze, "lib/model/stock_item.rb".freeze, "lib/util/validator.rb".freeze, "m2api.gemspec".freeze]
+  s.files = [".gitignore".freeze, ".rspec".freeze, ".ruby-gemset".freeze, ".ruby-version".freeze, ".travis.yml".freeze, "CODE_OF_CONDUCT.md".freeze, "Gemfile".freeze, "Gemfile.lock".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "bin/console".freeze, "bin/setup".freeze, "lib/adapter.rb".freeze, "lib/connection.rb".freeze, "lib/dataset.rb".freeze, "lib/filter.rb".freeze, "lib/m2api.rb".freeze, "lib/m2api/version.rb".freeze, "lib/model/attribute_set.rb".freeze, "lib/model/base.rb".freeze, "lib/model/cart.rb".freeze, "lib/model/category.rb".freeze, "lib/model/coupon.rb".freeze, "lib/model/customer.rb".freeze, "lib/model/order.rb".freeze, "lib/model/product.rb".freeze, "lib/model/product_attribute.rb".freeze, "lib/model/product_attribute_option.rb".freeze, "lib/model/sales_rule.rb".freeze, "lib/model/stock_item.rb".freeze, "lib/util/validator.rb".freeze, "m2api.gemspec".freeze]
   s.homepage = "https://github.com/elchingon/m2api.git".freeze
   s.licenses = ["MIT".freeze]
   s.rubygems_version = "2.7.9".freeze

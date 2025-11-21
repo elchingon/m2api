@@ -6,7 +6,7 @@ require 'time'
 require 'logger'
 
 module M2api
-  Models = %w(base product product_attribute customer order coupon sales_rule category cart stock_item)
+  Models = %w(base product product_attribute product_attribute_option attribute_set customer order coupon sales_rule category cart stock_item)
   @@mutex = Mutex.new
   def self.connect host=nil, user_name=nil, password=nil, access_token=nil, base_path=nil
     raise ArgumentError, "no host specified" unless host
