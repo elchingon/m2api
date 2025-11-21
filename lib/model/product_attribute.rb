@@ -33,6 +33,8 @@ module M2api
       is_visible_in_grid
       is_filterable_in_grid
       search_weight
+      is_html_allowed_on_front
+      used_for_sort_by
     )
 
     Attributes.each do |attr|
