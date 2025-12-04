@@ -35,6 +35,13 @@ module M2api
       search_weight
       is_html_allowed_on_front
       used_for_sort_by
+      is_global
+      is_displayed_in_autocomplete
+      is_display_rel_nofollow
+      facet_min_coverage_rate
+      facet_max_size
+      facet_sort_order
+      include_zero_false_values
     )
 
     Attributes.each do |attr|

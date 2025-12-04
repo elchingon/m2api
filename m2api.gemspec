@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name = "m2api".freeze
-  s.version = "0.1.5"
+  s.version = "0.1.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.metadata = { "allowed_push_host" => "https://github.com/", "changelog_uri" => "https://github.com/elchingon/m2api.git", "homepage_uri" => "https://github.com/elchingon/m2api.git", "source_code_uri" => "https://github.com/elchingon/m2api.git" } if s.respond_to? :metadata=
